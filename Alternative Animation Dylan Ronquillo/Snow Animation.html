@@ -1,0 +1,78 @@
+<!--Dylan Ronquillo-->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>A falling snowflake</title>
+  <style>
+    body {
+      background-color: #FFF;
+      margin: 30px;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    #contentContainer {
+      width: 550px;
+      height: 650px;
+      border: 5px black solid;
+      overflow: hidden;
+      background-color: #e2e0e5;
+      display: flex;
+      align-items: center;
+      background-image: url("winter.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+
+
+    #circle {
+      width: 70px;
+      height: 90px;
+      background-color: #fafbfa;
+      border-radius: 33%;
+      margin: auto;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div id="contentContainer">
+    <div id="circle"></div>
+  </div>
+
+  <script>
+var circle = document.querySelector("#circle");
+
+var yPos = -290;
+var angle = 100;
+
+function animate() {
+  yPos += 3;
+  angle += .07;
+  
+  xPos = Math.round(150 * Math.sin(angle));
+
+  circle.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
+
+  if (Math.abs(yPos) >= 650) {
+    yPos = -500;
+  }
+
+  if (angle > 2 * Math.PI) {
+    angle = 0;
+  }
+
+  requestAnimationFrame(animate);
+}
+animate();
+  </script>
+</body>
+
+</html>
